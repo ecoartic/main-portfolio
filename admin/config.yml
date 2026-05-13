@@ -1,0 +1,19 @@
+backend:
+  name: git-gateway
+  repo: ecoartic/main-portfolio
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "projects"
+    label: "Projects / نمونه‌کارها"
+    folder: "_data/projects"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title (EN)", name: "title_en", widget: "string" }
+      - { label: "Category", name: "category", widget: "select", options: ["unreal", "ai", "vp", "arvr", "3dgs", "motion"] }
+      - { label: "Thumbnail", name: "thumbnail", widget: "image" }
+      - { label: "Description (EN)", name: "desc_en", widget: "text" }
