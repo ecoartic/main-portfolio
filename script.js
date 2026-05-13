@@ -1,164 +1,260 @@
 /* ============================================================
-   BEHRANG.XYZ — JavaScript
-   Language Switch · Accordion · Works Filter · Reveal · Nav
+   BEHRANG.XYZ — script.js
+   Dynamic JSON loader + Lang Switch + Accordion + Filter + Reveal
    ============================================================ */
 
-document.addEventListener('DOMContentLoaded', function () {
+(function () {
+  'use strict';
 
-  /* ---- Language Switcher ---- */
-  const langBtns = document.querySelectorAll('.lang-btn');
-  const html = document.documentElement;
+  /* ---- State ---- */
+  let currentLang = localStorage.getItem('bx-lang') || 'en';
+  let projectsData = [];
 
-  function setLang(lang) {
-    html.setAttribute('data-lang', lang);
-    html.setAttribute('lang', lang);
+  /* ============================================================
+     1. LANGUAGE SWITCHER
+     ============================================================ */
+  function applyLang(lang) {
+    currentLang = lang;
+    document.documentElement.setAttribute('data-lang', lang);
+    document.documentElement.setAttribute('lang', lang);
 
-    // Update all data-lang text nodes
+    // Update all [data-XX] text elements
     document.querySelectorAll('[data-' + lang + ']').forEach(function (el) {
       const val = el.getAttribute('data-' + lang);
-      if (val) {
-        // For inputs, update placeholder
-        if (el.tagName === 'INPUT') {
-          el.placeholder = val;
-        } else {
-          el.textContent = val;
-        }
+      if (!val) return;
+      if (el.tagName === 'INPUT') {
+        el.placeholder = val;
+      } else {
+        el.textContent = val;
       }
     });
 
-    // RTL toggle
-    document.body.style.direction = lang === 'fa' ? 'rtl' : 'ltr';
-    document.body.style.fontFamily = lang === 'fa'
-      ? "'Vazirmatn', sans-serif"
-      : "'DM Sans', sans-serif";
+    // RTL / font
+    if (lang === 'fa') {
+      document.body.style.direction = 'rtl';
+      document.body.style.fontFamily = "'Vazirmatn', sans-serif";
+    } else {
+      document.body.style.direction = 'ltr';
+      document.body.style.fontFamily = "'DM Sans', sans-serif";
+    }
 
     // Active button
-    langBtns.forEach(function (btn) {
+    document.querySelectorAll('.lang-btn').forEach(function (btn) {
       btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
     });
 
-    // Save
     localStorage.setItem('bx-lang', lang);
+
+    // Re-render projects in new language
+    if (projectsData.length) renderProjects(projectsData, currentFilter);
   }
 
-  langBtns.forEach(function (btn) {
+  document.querySelectorAll('.lang-btn').forEach(function (btn) {
     btn.addEventListener('click', function () {
-      setLang(btn.getAttribute('data-lang'));
+      applyLang(btn.getAttribute('data-lang'));
     });
   });
 
-  // Restore saved language
-  const saved = localStorage.getItem('bx-lang');
-  if (saved) setLang(saved);
-
-
-  /* ---- Hamburger / Mobile Menu ---- */
+  /* ============================================================
+     2. NAV — hamburger + scroll style
+     ============================================================ */
+  const nav = document.getElementById('nav');
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
 
-  hamburger.addEventListener('click', function () {
-    mobileMenu.classList.toggle('open');
-  });
+  if (hamburger && mobileMenu) {
+    hamburger.addEventListener('click', function () {
+      mobileMenu.classList.toggle('open');
+    });
+  }
 
   window.closeMobile = function () {
-    mobileMenu.classList.remove('open');
+    if (mobileMenu) mobileMenu.classList.remove('open');
   };
 
-
-  /* ---- Sticky Nav scroll style ---- */
-  const nav = document.getElementById('nav');
   window.addEventListener('scroll', function () {
+    if (!nav) return;
     nav.style.borderBottomColor = window.scrollY > 60
-      ? 'rgba(255,255,255,0.1)'
+      ? 'rgba(255,255,255,0.12)'
       : 'rgba(255,255,255,0.07)';
   }, { passive: true });
 
-
-  /* ---- Accordion ---- */
+  /* ============================================================
+     3. ACCORDION
+     ============================================================ */
   document.querySelectorAll('.acc-trigger').forEach(function (trigger) {
     trigger.addEventListener('click', function () {
       const item = trigger.closest('.acc-item');
       const isOpen = item.classList.contains('open');
-
-      // Close all
       document.querySelectorAll('.acc-item').forEach(function (i) {
         i.classList.remove('open');
       });
-
-      // Open clicked (if was closed)
       if (!isOpen) item.classList.add('open');
     });
   });
 
   // Open first by default
-  const first = document.querySelector('.acc-item');
-  if (first) first.classList.add('open');
+  const firstAcc = document.querySelector('.acc-item');
+  if (firstAcc) firstAcc.classList.add('open');
 
+  /* ============================================================
+     4. WORKS — fetch JSON + render + filter
+     ============================================================ */
+  let currentFilter = 'all';
+  const worksGrid = document.querySelector('.works-grid');
 
-  /* ---- Works Filter ---- */
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const workCards = document.querySelectorAll('.work-card');
+  function getCategoryLabel(cat) {
+    const map = {
+      unreal: 'Unreal Engine',
+      ai: 'AI Generative',
+      vp: 'Virtual Production',
+      arvr: 'AR / VR',
+      '3dgs': '3DGS',
+      motion: 'Motion Design'
+    };
+    return map[cat] || cat;
+  }
 
-  filterBtns.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      filterBtns.forEach(function (b) { b.classList.remove('active'); });
-      btn.classList.add('active');
+  function getTitle(item) {
+    return item['title_' + currentLang] || item.title_en || '';
+  }
 
-      const filter = btn.getAttribute('data-filter');
-      workCards.forEach(function (card) {
-        if (filter === 'all' || card.getAttribute('data-category') === filter) {
-          card.classList.remove('hidden');
-        } else {
-          card.classList.add('hidden');
-        }
+  function getDesc(item) {
+    return item['desc_' + currentLang] || item.desc_en || '';
+  }
+
+  function buildCard(item) {
+    const hidden = (currentFilter !== 'all' && item.category !== currentFilter) ? ' hidden' : '';
+    const thumb = item.thumbnail
+      ? '<img src="' + item.thumbnail + '" alt="' + getTitle(item) + '" loading="lazy" style="width:100%;height:100%;object-fit:cover;">'
+      : '';
+    const link = item.video_url || '#';
+
+    return '<a href="' + link + '" class="work-card reveal' + hidden + '" data-category="' + item.category + '"' +
+      (item.video_url ? ' target="_blank" rel="noopener"' : '') + '>' +
+      '<div class="work-thumb">' +
+      '<div class="work-thumb-bg" style="background:linear-gradient(135deg,#1a1a1a,#0a0a0a)">' +
+      thumb +
+      '<span class="work-cat-badge">' + getCategoryLabel(item.category) + '</span>' +
+      '</div></div>' +
+      '<div class="work-info">' +
+      '<h3>' + getTitle(item) + '</h3>' +
+      '<p>' + getDesc(item) + '</p>' +
+      '</div></a>';
+  }
+
+  function renderProjects(items, filter) {
+    if (!worksGrid) return;
+    currentFilter = filter || 'all';
+
+    // Sort by order
+    const sorted = items.slice().sort(function (a, b) {
+      return (a.order || 0) - (b.order || 0);
+    });
+
+    worksGrid.innerHTML = sorted.map(buildCard).join('');
+
+    // Re-observe for reveal
+    worksGrid.querySelectorAll('.reveal').forEach(function (el) {
+      revealObserver.observe(el);
+    });
+  }
+
+  function loadProjects() {
+    fetch('/_data/projects.json?v=' + Date.now())
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        // Support both {items:[]} and flat [] formats
+        projectsData = Array.isArray(data) ? data : (data.items || []);
+        renderProjects(projectsData, currentFilter);
+      })
+      .catch(function () {
+        // Fallback: keep static HTML if JSON fails
+        console.warn('BEHRANG: Could not load projects.json — using static HTML');
       });
+  }
+
+  // Filter buttons
+  document.querySelectorAll('.filter-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.filter-btn').forEach(function (b) {
+        b.classList.remove('active');
+      });
+      btn.classList.add('active');
+      currentFilter = btn.getAttribute('data-filter');
+
+      if (projectsData.length) {
+        renderProjects(projectsData, currentFilter);
+      } else {
+        // Static fallback filter
+        document.querySelectorAll('.work-card').forEach(function (card) {
+          if (currentFilter === 'all' || card.getAttribute('data-category') === currentFilter) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+      }
     });
   });
 
-
-  /* ---- Scroll Reveal ---- */
-  const reveals = document.querySelectorAll('.reveal');
-
-  const revealObserver = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry, i) {
-      if (entry.isIntersecting) {
-        // Stagger delay based on sibling index
-        const siblings = Array.from(entry.target.parentElement.querySelectorAll('.reveal'));
-        const idx = siblings.indexOf(entry.target);
-        entry.target.style.transitionDelay = (idx * 0.07) + 's';
-        entry.target.classList.add('visible');
-        revealObserver.unobserve(entry.target);
-      }
+  /* ============================================================
+     5. SCROLL REVEAL
+     ============================================================ */
+  var revealObserver = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      const siblings = Array.from(
+        entry.target.closest('section, .about-grid, .accordion, .works-grid, .avatar-grid') 
+          ? entry.target.parentElement.querySelectorAll('.reveal')
+          : [entry.target]
+      );
+      const idx = siblings.indexOf(entry.target);
+      entry.target.style.transitionDelay = Math.min(idx * 0.07, 0.4) + 's';
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
     });
-  }, { threshold: 0.12 });
+  }, { threshold: 0.1 });
 
-  reveals.forEach(function (el) { revealObserver.observe(el); });
+  document.querySelectorAll('.reveal').forEach(function (el) {
+    revealObserver.observe(el);
+  });
 
-
-  /* ---- Quick Prompts (Avatar placeholder) ---- */
+  /* ============================================================
+     6. AVATAR CHAT — placeholder
+     ============================================================ */
   const chatInput = document.getElementById('chatInput');
   const chatSend = document.getElementById('chatSend');
 
-  document.querySelectorAll('.prompt-btn').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      chatInput.value = btn.textContent;
-      chatInput.focus();
+  if (chatInput && chatSend) {
+    document.querySelectorAll('.prompt-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        chatInput.value = btn.textContent.trim();
+        chatInput.focus();
+      });
     });
-  });
 
-  chatSend.addEventListener('click', function () {
-    const val = chatInput.value.trim();
-    if (!val) return;
-    // Placeholder — وقتی ElevenLabs Agent وصل شد اینجا integrate می‌شه
-    chatInput.value = '';
-    chatInput.placeholder = 'AI Avatar coming soon — ElevenLabs integration pending';
-    setTimeout(function () {
-      chatInput.placeholder = 'Ask a question...';
-    }, 3000);
-  });
+    function sendChat() {
+      const val = chatInput.value.trim();
+      if (!val) return;
+      chatInput.value = '';
+      const original = chatInput.placeholder;
+      chatInput.placeholder = 'ElevenLabs AI Agent — coming soon...';
+      setTimeout(function () {
+        chatInput.placeholder = original;
+      }, 3000);
+    }
 
-  chatInput.addEventListener('keydown', function (e) {
-    if (e.key === 'Enter') chatSend.click();
-  });
+    chatSend.addEventListener('click', sendChat);
+    chatInput.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') sendChat();
+    });
+  }
 
-});
+  /* ============================================================
+     7. INIT
+     ============================================================ */
+  applyLang(currentLang);
+  loadProjects();
+
+})();
