@@ -2,6 +2,8 @@ backend:
   name: git-gateway
   repo: ecoartic/main-portfolio
   branch: main
+  # آدرس اختصاصی نتلیفای خود را اینجا اضافه کنید:
+  site_domain: tiny-beijinho-ba5aa8.netlify.app
 
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
