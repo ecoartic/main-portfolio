@@ -8,22 +8,21 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
+
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
 
-  <!-- NAV -->
   <header class="nav" id="nav">
     <div class="nav-inner">
       <a href="#" class="nav-logo">BEHRANG<sup>®</sup></a>
-
       <nav class="nav-links">
-        <a href="#about" data-en="/ABOUT" data-fa="/درباره" data-tr="/HAKKINDA" data-de="/ÜBER">/ABOUT</a>
-        <a href="#works" data-en="/WORKS" data-fa="/آثار" data-tr="/ÇALIŞMALAR" data-de="/WERKE">/WORKS</a>
-        <a href="#expertise" data-en="/EXPERTISE" data-fa="/تخصص" data-tr="/UZMANLIK" data-de="/EXPERTISE">/EXPERTISE</a>
-        <a href="#avatar" data-en="/AVATAR" data-fa="/آواتار" data-tr="/AVATAR" data-de="/AVATAR">/AVATAR</a>
-        <a href="#contact" data-en="/CONTACT" data-fa="/تماس" data-tr="/İLETİŞİM" data-de="/KONTAKT">/CONTACT</a>
+        <a href="#about">/ABOUT</a>
+        <a href="#works">/WORKS</a>
+        <a href="#expertise">/EXPERTISE</a>
+        <a href="#avatar">/AVATAR</a>
+        <a href="#contact">/CONTACT</a>
       </nav>
-
       <div class="nav-right">
         <div class="lang-switcher">
           <button class="lang-btn active" data-lang="en">EN</button>
@@ -31,14 +30,13 @@
           <button class="lang-btn" data-lang="tr">TR</button>
           <button class="lang-btn" data-lang="de">DE</button>
         </div>
-        <button class="hamburger" aria-label="Menu" id="hamburger">
+        <button class="hamburger" id="hamburger">
           <span></span><span></span><span></span>
         </button>
       </div>
     </div>
   </header>
 
-  <!-- MOBILE MENU -->
   <div class="mobile-menu" id="mobileMenu">
     <a href="#about" onclick="closeMobile()">/ABOUT</a>
     <a href="#works" onclick="closeMobile()">/WORKS</a>
@@ -47,405 +45,123 @@
     <a href="#contact" onclick="closeMobile()">/CONTACT</a>
   </div>
 
-  <!-- HERO -->
   <section class="hero" id="hero">
     <div class="hero-bg">
       <div class="hero-grain"></div>
       <div class="hero-glow"></div>
     </div>
-
     <div class="hero-content">
       <div class="hero-eyebrow reveal">
         <span class="eyebrow-dot"></span>
-        <span data-en="Digital Content Creator & Motion Director" data-fa="تولیدکننده محتوای دیجیتال و کارگردان موشن" data-tr="Dijital İçerik Üreticisi & Motion Direktörü" data-de="Digitaler Content Creator & Motion Director">Digital Content Creator & Motion Director</span>
+        <span>Digital Content Creator & Motion Director</span>
       </div>
-
-      <h1 class="hero-title reveal">
-        <span class="title-line">BEHRANG</span><sup class="title-reg">®</sup>
-      </h1>
-
-      <p class="hero-sub reveal">
-        <span data-en="Digital Content" data-fa="محتوای دیجیتال" data-tr="Dijital İçerik" data-de="Digitaler Content">Digital Content</span>
-        <em>·</em>
-        <span data-en="Motion" data-fa="موشن" data-tr="Motion" data-de="Motion">Motion</span>
-        <em>·</em>
-        <span data-en="Virtual Production" data-fa="تولید مجازی" data-tr="Sanal Prodüksiyon" data-de="Virtuelle Produktion">Virtual Production</span>
-      </p>
+      <h1 class="hero-title reveal">BEHRANG<sup class="title-reg">®</sup></h1>
+      <p class="hero-sub reveal">Digital Content · Motion · Virtual Production</p>
     </div>
-
     <div class="hero-marquee-wrap">
       <div class="hero-marquee-track">
-        <span>Unreal Engine</span><em>/</em>
-        <span>AI Generative</span><em>/</em>
-        <span>Virtual Production</span><em>/</em>
-        <span>AR &amp; VR</span><em>/</em>
-        <span>3D Gaussian Splatting</span><em>/</em>
-        <span>Motion Design</span><em>/</em>
-        <span>Unreal Engine</span><em>/</em>
-        <span>AI Generative</span><em>/</em>
-        <span>Virtual Production</span><em>/</em>
-        <span>AR &amp; VR</span><em>/</em>
-        <span>3D Gaussian Splatting</span><em>/</em>
-        <span>Motion Design</span><em>/</em>
+        <span>Unreal Engine</span><em>/</em><span>AI Generative</span><em>/</em><span>Virtual Production</span><em>/</em><span>AR & VR</span><em>/</em><span>3DGS</span><em>/</em><span>Motion Design</span><em>/</em>
       </div>
-    </div>
-
-    <div class="scroll-hint">
-      <div class="scroll-line"></div>
-      <span>SCROLL</span>
     </div>
   </section>
 
-  <!-- ABOUT -->
   <section class="about section-pad" id="about">
     <div class="container">
       <div class="about-grid">
-
         <div class="about-cards">
-          <div class="about-card reveal">
-            <span class="card-num">/01</span>
-            <span class="card-title" data-en="MOTION DIRECTOR" data-fa="کارگردان موشن" data-tr="MOTİON DİREKTÖRÜ" data-de="MOTION DIREKTOR">MOTION DIRECTOR</span>
-          </div>
-          <div class="about-card reveal">
-            <span class="card-num">/02</span>
-            <span class="card-title" data-en="VIRTUAL WORLDS" data-fa="دنیاهای مجازی" data-tr="SANAL DÜNYALAR" data-de="VIRTUELLE WELTEN">VIRTUAL WORLDS</span>
-          </div>
-          <div class="about-card reveal">
-            <span class="card-num">/03</span>
-            <span class="card-title" data-en="AI PIONEER" data-fa="پیشگام هوش مصنوعی" data-tr="YAPAY ZEKA ÖNCÜSÜ" data-de="KI PIONIER">AI PIONEER</span>
-          </div>
-          <div class="about-card reveal">
-            <span class="card-num">/04</span>
-            <span class="card-title" data-en="DIGITAL ARTIST" data-fa="هنرمند دیجیتال" data-tr="DİJİTAL SANATÇI" data-de="DIGITALER KÜNSTLER">DIGITAL ARTIST</span>
-          </div>
+          <div class="about-card reveal"><span class="card-num">/01</span><span class="card-title">MOTION DIRECTOR</span></div>
+          <div class="about-card reveal"><span class="card-num">/02</span><span class="card-title">VIRTUAL WORLDS</span></div>
+          <div class="about-card reveal"><span class="card-num">/03</span><span class="card-title">AI PIONEER</span></div>
+          <div class="about-card reveal"><span class="card-num">/04</span><span class="card-title">DIGITAL ARTIST</span></div>
         </div>
-
         <div class="about-text">
           <div class="section-label reveal">ABOUT</div>
-          <p class="about-bio reveal"
-            data-en="Creating immersive digital experiences at the intersection of AI, motion, and virtual production. Based in Istanbul, working globally with brands, studios, and directors."
-            data-fa="خلق تجربیات دیجیتال در تقاطع هوش مصنوعی، موشن و تولید مجازی. مستقر در استانبول، فعال در سطح بین‌المللی با برندها، استودیوها و کارگردانان."
-            data-tr="Yapay zeka, motion ve sanal prodüksiyonun kesişiminde etkileyici dijital deneyimler yaratıyorum. İstanbul merkezli, markalar ve stüdyolarla küresel ölçekte çalışıyorum."
-            data-de="Immersive digitale Erlebnisse an der Schnittstelle von KI, Motion und virtueller Produktion. In Istanbul ansässig, arbeite ich weltweit mit Marken, Studios und Regisseuren.">
-            Creating immersive digital experiences at the intersection of AI, motion, and virtual production. Based in Istanbul, working globally with brands, studios, and directors.
-          </p>
-
+          <p class="about-bio reveal">Creating immersive digital experiences at the intersection of AI, motion, and virtual production. Based in Istanbul, working globally.</p>
           <div class="about-stats reveal">
-            <div class="stat">
-              <span class="stat-n">+50</span>
-              <span class="stat-l" data-en="Projects" data-fa="پروژه" data-tr="Proje" data-de="Projekte">Projects</span>
-            </div>
-            <div class="stat">
-              <span class="stat-n">8+</span>
-              <span class="stat-l" data-en="Years" data-fa="سال تجربه" data-tr="Yıl" data-de="Jahre">Years</span>
-            </div>
-            <div class="stat">
-              <span class="stat-n">4</span>
-              <span class="stat-l" data-en="Languages" data-fa="زبان" data-tr="Dil" data-de="Sprachen">Languages</span>
-            </div>
-            <div class="stat">
-              <span class="stat-n">6</span>
-              <span class="stat-l" data-en="Disciplines" data-fa="تخصص" data-tr="Disiplin" data-de="Disziplinen">Disciplines</span>
-            </div>
+            <div class="stat"><span class="stat-n">+50</span><span class="stat-l">Projects</span></div>
+            <div class="stat"><span class="stat-n">8+</span><span class="stat-l">Years</span></div>
           </div>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- EXPERTISE -->
   <section class="expertise section-pad" id="expertise">
     <div class="container">
-      <div class="section-head reveal">
-        <span class="section-label">EXPERTISE</span>
-        <h2 class="section-title" data-en="WHAT I DO" data-fa="تخصص‌ها" data-tr="NE YAPIYORUM" data-de="WAS ICH TUE">WHAT I DO</h2>
-      </div>
-
+      <div class="section-head reveal"><span class="section-label">EXPERTISE</span><h2 class="section-title">WHAT I DO</h2></div>
       <div class="accordion">
         <div class="acc-item reveal">
-          <button class="acc-trigger">
-            <div class="acc-left">
-              <span class="acc-num">/01</span>
-              <span class="acc-name" data-en="Unreal Engine" data-fa="آنریل انجین" data-tr="Unreal Engine" data-de="Unreal Engine">Unreal Engine</span>
-            </div>
-            <span class="acc-icon">+</span>
-          </button>
-          <div class="acc-body">
-            <p data-en="Real-time 3D environments, virtual production pipelines, nDisplay setups, and interactive experiences built in Unreal Engine 5 for film, broadcast and live events."
-               data-fa="محیط‌های سه‌بعدی real-time، پایپ‌لاین‌های تولید مجازی، تنظیمات nDisplay و تجربیات تعاملی در Unreal Engine 5 برای فیلم، پخش زنده و رویدادها."
-               data-tr="Unreal Engine 5 ile film, yayın ve canlı etkinlikler için gerçek zamanlı 3D ortamlar, sanal prodüksiyon ardışık düzenleri ve etkileşimli deneyimler."
-               data-de="Echtzeit-3D-Umgebungen, virtuelle Produktionspipelines, nDisplay-Setups und interaktive Erlebnisse in Unreal Engine 5 für Film, Broadcast und Live-Events.">
-              Real-time 3D environments, virtual production pipelines, nDisplay setups, and interactive experiences built in Unreal Engine 5 for film, broadcast and live events.
-            </p>
-          </div>
+          <button class="acc-trigger"><div class="acc-left"><span class="acc-num">/01</span><span class="acc-name">Unreal Engine</span></div><span class="acc-icon">+</span></button>
+          <div class="acc-body"><p>Real-time 3D environments and virtual production pipelines built in UE5.</p></div>
         </div>
-
         <div class="acc-item reveal">
-          <button class="acc-trigger">
-            <div class="acc-left">
-              <span class="acc-num">/02</span>
-              <span class="acc-name" data-en="AI Generative" data-fa="هوش مصنوعی مولد" data-tr="Üretken Yapay Zeka" data-de="Generative KI">AI Generative</span>
-            </div>
-            <span class="acc-icon">+</span>
-          </button>
-          <div class="acc-body">
-            <p data-en="Sora, Runway, ComfyUI, and Stable Diffusion workflows for AI-driven motion content, visual storytelling and automated production pipelines."
-               data-fa="워크플로우های Sora، Runway، ComfyUI و Stable Diffusion برای محتوای موشن هوش مصنوعی و پایپ‌لاین‌های تولید خودکار."
-               data-tr="Sora, Runway, ComfyUI ve Stable Diffusion iş akışları ile AI destekli motion içeriği ve otomatik prodüksiyon süreçleri."
-               data-de="Sora, Runway, ComfyUI und Stable Diffusion Workflows für KI-getriebene Motion-Inhalte und automatisierte Produktionspipelines.">
-              Sora, Runway, ComfyUI, and Stable Diffusion workflows for AI-driven motion content, visual storytelling and automated production pipelines.
-            </p>
-          </div>
-        </div>
-
-        <div class="acc-item reveal">
-          <button class="acc-trigger">
-            <div class="acc-left">
-              <span class="acc-num">/03</span>
-              <span class="acc-name" data-en="Virtual Production" data-fa="تولید مجازی" data-tr="Sanal Prodüksiyon" data-de="Virtuelle Produktion">Virtual Production</span>
-            </div>
-            <span class="acc-icon">+</span>
-          </button>
-          <div class="acc-body">
-            <p data-en="LED wall stages, real-time compositing, camera tracking, and full virtual studio pipelines for film and broadcast."
-               data-fa="استیج‌های LED Wall، کامپوزیتینگ real-time، ردیابی دوربین و پایپ‌لاین‌های کامل استودیو مجازی برای فیلم و پخش."
-               data-tr="LED duvar sahneleri, gerçek zamanlı kompozisyon, kamera takibi ve film ve yayın için tam sanal stüdyo ardışık düzenleri."
-               data-de="LED-Wall-Bühnen, Echtzeit-Compositing, Kamera-Tracking und vollständige virtuelle Studiopipelines für Film und Broadcast.">
-              LED wall stages, real-time compositing, camera tracking, and full virtual studio pipelines for film and broadcast.
-            </p>
-          </div>
-        </div>
-
-        <div class="acc-item reveal">
-          <button class="acc-trigger">
-            <div class="acc-left">
-              <span class="acc-num">/04</span>
-              <span class="acc-name" data-en="AR / VR" data-fa="واقعیت افزوده / مجازی" data-tr="AR / VR" data-de="AR / VR">AR / VR</span>
-            </div>
-            <span class="acc-icon">+</span>
-          </button>
-          <div class="acc-body">
-            <p data-en="Meta Quest, WebXR and HoloLens experiences for immersive storytelling, brand activations and interactive installations."
-               data-fa="تجربیات Meta Quest، WebXR و HoloLens برای داستان‌سرایی immersive، فعال‌سازی برندها و نصب‌های تعاملی."
-               data-tr="Sürükleyici hikaye anlatımı ve marka aktivasyonları için Meta Quest, WebXR ve HoloLens deneyimleri."
-               data-de="Meta Quest, WebXR und HoloLens Erlebnisse für immersives Storytelling, Markenaktivierungen und interaktive Installationen.">
-              Meta Quest, WebXR and HoloLens experiences for immersive storytelling, brand activations and interactive installations.
-            </p>
-          </div>
-        </div>
-
-        <div class="acc-item reveal">
-          <button class="acc-trigger">
-            <div class="acc-left">
-              <span class="acc-num">/05</span>
-              <span class="acc-name" data-en="3D Gaussian Splatting" data-fa="اسپلتینگ گاوسی سه‌بعدی" data-tr="3D Gaussian Splatting" data-de="3D Gaussian Splatting">3D Gaussian Splatting</span>
-            </div>
-            <span class="acc-icon">+</span>
-          </button>
-          <div class="acc-body">
-            <p data-en="NeRF, 3DGS and photogrammetry pipelines for ultra-realistic digital twins, spatial capture and web-embedded 3D experiences."
-               data-fa="پایپ‌لاین‌های NeRF، 3DGS و فتوگرامتری برای دوقلوهای دیجیتال فوق‌واقعی و تجربیات سه‌بعدی embedded در وب."
-               data-tr="Ultra gerçekçi dijital ikizler ve web gömülü 3D deneyimler için NeRF, 3DGS ve fotogrametri ardışık düzenleri."
-               data-de="NeRF, 3DGS und Photogrammetrie-Pipelines für ultra-realistische digitale Zwillinge und web-eingebettete 3D-Erlebnisse.">
-              NeRF, 3DGS and photogrammetry pipelines for ultra-realistic digital twins, spatial capture and web-embedded 3D experiences.
-            </p>
-          </div>
-        </div>
-
-        <div class="acc-item reveal">
-          <button class="acc-trigger">
-            <div class="acc-left">
-              <span class="acc-num">/06</span>
-              <span class="acc-name" data-en="Motion Design" data-fa="موشن دیزاین" data-tr="Motion Tasarım" data-de="Motion Design">Motion Design</span>
-            </div>
-            <span class="acc-icon">+</span>
-          </button>
-          <div class="acc-body">
-            <p data-en="After Effects, Cinema 4D and Houdini for broadcast motion graphics, title sequences, VFX and brand film production."
-               data-fa="After Effects، Cinema 4D و Houdini برای موشن گرافیک broadcast، سکانس‌های عنوان، جلوه‌های بصری و تولید فیلم برند."
-               data-tr="Yayın motion grafikleri, başlık sekansları ve marka filmi prodüksiyonu için After Effects, Cinema 4D ve Houdini."
-               data-de="After Effects, Cinema 4D und Houdini für Broadcast-Motion-Graphics, Titelsequenzen, VFX und Markenfimproduktion.">
-              After Effects, Cinema 4D and Houdini for broadcast motion graphics, title sequences, VFX and brand film production.
-            </p>
-          </div>
+          <button class="acc-trigger"><div class="acc-left"><span class="acc-num">/02</span><span class="acc-name">AI Generative</span></div><span class="acc-icon">+</span></button>
+          <div class="acc-body"><p>Sora, Runway, and ComfyUI workflows for AI-driven motion content.</p></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- WORKS -->
   <section class="works section-pad" id="works">
     <div class="container">
-      <div class="section-head reveal">
-        <span class="section-label">WORKS</span>
-        <h2 class="section-title" data-en="SELECTED PROJECTS" data-fa="پروژه‌های منتخب" data-tr="SEÇİLMİŞ PROJELER" data-de="AUSGEWÄHLTE PROJEKTE">SELECTED PROJECTS</h2>
-      </div>
-
+      <div class="section-head reveal"><span class="section-label">WORKS</span><h2 class="section-title">SELECTED PROJECTS</h2></div>
       <div class="works-filter reveal">
-        <button class="filter-btn active" data-filter="all" data-en="ALL" data-fa="همه" data-tr="TÜMÜ" data-de="ALLE">ALL</button>
-        <button class="filter-btn" data-filter="unreal" data-en="UNREAL" data-fa="آنریل" data-tr="UNREAL" data-de="UNREAL">UNREAL</button>
-        <button class="filter-btn" data-filter="ai" data-en="AI" data-fa="هوش مصنوعی" data-tr="YZ" data-de="KI">AI</button>
-        <button class="filter-btn" data-filter="vp" data-en="VIRTUAL PROD." data-fa="تولید مجازی" data-tr="SANAL PROD." data-de="VIRT. PROD.">VIRTUAL PROD.</button>
-        <button class="filter-btn" data-filter="arvr" data-en="AR/VR" data-fa="AR/VR" data-tr="AR/VR" data-de="AR/VR">AR/VR</button>
-        <button class="filter-btn" data-filter="3dgs" data-en="3DGS" data-fa="3DGS" data-tr="3DGS" data-de="3DGS">3DGS</button>
+        <button class="filter-btn active" data-filter="all">ALL</button>
+        <button class="filter-btn" data-filter="unreal">UNREAL</button>
+        <button class="filter-btn" data-filter="ai">AI</button>
       </div>
-
       <div class="works-grid">
         <a href="#" class="work-card reveal" data-category="unreal">
-          <div class="work-thumb">
-            <div class="work-thumb-bg" style="background:linear-gradient(135deg,#1a1a1a,#0d0d0d)">
-              <span class="work-cat-badge">Unreal Engine</span>
-            </div>
-          </div>
-          <div class="work-info">
-            <h3 data-en="Unreal Engine World" data-fa="دنیای آنریل انجین" data-tr="Unreal Engine Dünyası" data-de="Unreal Engine Welt">Unreal Engine World</h3>
-            <p data-en="Real-time virtual environment for broadcast" data-fa="محیط مجازی real-time برای پخش" data-tr="Yayın için gerçek zamanlı sanal ortam" data-de="Echtzeit-virtuelle Umgebung für Broadcast">Real-time virtual environment for broadcast</p>
-          </div>
-        </a>
-
-        <a href="#" class="work-card reveal" data-category="ai">
-          <div class="work-thumb">
-            <div class="work-thumb-bg" style="background:linear-gradient(135deg,#111,#1a1a1a)">
-              <span class="work-cat-badge">AI Generative</span>
-            </div>
-          </div>
-          <div class="work-info">
-            <h3 data-en="AI Visual System" data-fa="سیستم بصری هوش مصنوعی" data-tr="YZ Görsel Sistemi" data-de="KI Visuelles System">AI Visual System</h3>
-            <p data-en="Generative motion content pipeline" data-fa="پایپ‌لاین محتوای موشن مولد" data-tr="Üretken motion içerik ardışık düzeni" data-de="Generative Motion-Content-Pipeline">Generative motion content pipeline</p>
-          </div>
-        </a>
-
-        <a href="#" class="work-card reveal" data-category="vp">
-          <div class="work-thumb">
-            <div class="work-thumb-bg" style="background:linear-gradient(135deg,#161616,#0a0a0a)">
-              <span class="work-cat-badge">Virtual Production</span>
-            </div>
-          </div>
-          <div class="work-info">
-            <h3 data-en="Virtual Studio" data-fa="استودیو مجازی" data-tr="Sanal Stüdyo" data-de="Virtuelles Studio">Virtual Studio</h3>
-            <p data-en="LED wall virtual production setup" data-fa="تنظیم تولید مجازی LED Wall" data-tr="LED duvar sanal prodüksiyon kurulumu" data-de="LED-Wall virtuelle Produktionseinrichtung">LED wall virtual production setup</p>
-          </div>
-        </a>
-
-        <a href="#" class="work-card reveal" data-category="3dgs">
-          <div class="work-thumb">
-            <div class="work-thumb-bg" style="background:linear-gradient(135deg,#131313,#1c1c1c)">
-              <span class="work-cat-badge">3DGS</span>
-            </div>
-          </div>
-          <div class="work-info">
-            <h3 data-en="3DGS Scan" data-fa="اسکن 3DGS" data-tr="3DGS Tarama" data-de="3DGS Scan">3DGS Scan</h3>
-            <p data-en="Photogrammetry & Gaussian splatting" data-fa="فتوگرامتری و اسپلتینگ گاوسی" data-tr="Fotogrametri ve Gaussian splatting" data-de="Photogrammetrie & Gaussian Splatting">Photogrammetry & Gaussian splatting</p>
-          </div>
-        </a>
-
-        <a href="#" class="work-card reveal" data-category="arvr">
-          <div class="work-thumb">
-            <div class="work-thumb-bg" style="background:linear-gradient(135deg,#0f0f0f,#181818)">
-              <span class="work-cat-badge">AR / VR</span>
-            </div>
-          </div>
-          <div class="work-info">
-            <h3 data-en="Immersive Experience" data-fa="تجربه immersive" data-tr="Sürükleyici Deneyim" data-de="Immersives Erlebnis">Immersive Experience</h3>
-            <p data-en="WebXR interactive installation" data-fa="نصب تعاملی WebXR" data-tr="WebXR etkileşimli kurulum" data-de="WebXR interaktive Installation">WebXR interactive installation</p>
-          </div>
-        </a>
-
-        <a href="#" class="work-card reveal" data-category="ai">
-          <div class="work-thumb">
-            <div class="work-thumb-bg" style="background:linear-gradient(135deg,#141414,#0c0c0c)">
-              <span class="work-cat-badge">Motion Design</span>
-            </div>
-          </div>
-          <div class="work-info">
-            <h3 data-en="Brand Film" data-fa="فیلم برند" data-tr="Marka Filmi" data-de="Markenfilm">Brand Film</h3>
-            <p data-en="Broadcast motion graphics & VFX" data-fa="موشن گرافیک broadcast و جلوه بصری" data-tr="Yayın motion grafikleri ve VFX" data-de="Broadcast Motion-Graphics & VFX">Broadcast motion graphics & VFX</p>
-          </div>
+          <div class="work-thumb"><div class="work-thumb-bg" style="background:#1a1a1a"><span class="work-cat-badge">Unreal Engine</span></div></div>
+          <div class="work-info"><h3>Unreal Engine World</h3><p>Virtual environment for broadcast</p></div>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- AI AVATAR -->
   <section class="avatar-section section-pad" id="avatar">
     <div class="container">
-      <div class="section-head reveal">
-        <span class="section-label">AI AGENT</span>
-        <h2 class="section-title" data-en="TALK TO BEHRANG" data-fa="با بهرنگ صحبت کن" data-tr="BEHRANG İLE KONUŞ" data-de="MIT BEHRANG SPRECHEN">TALK TO BEHRANG</h2>
-      </div>
-
+      <div class="section-head reveal"><span class="section-label">AI AGENT</span><h2 class="section-title">TALK TO BEHRANG</h2></div>
       <div class="avatar-grid reveal">
-        <div class="avatar-visual">
-          <div class="avatar-frame">
-            <!-- 3DGS / Avatar embed alanı -->
-            <div class="avatar-placeholder">
-              <div class="avatar-orb"></div>
-              <span class="avatar-status">
-                <span class="status-dot"></span>
-                <span data-en="AI Avatar — Coming Soon" data-fa="آواتار هوش مصنوعی — به زودی" data-tr="Yapay Zeka Avatarı — Yakında" data-de="KI Avatar — Demnächst">AI Avatar — Coming Soon</span>
-              </span>
-            </div>
-            <!-- وقتی آماده شد iframe اینجا قرار می‌گیرد -->
-            <!--
-            <iframe
-              src="YOUR_HEYGEN_AVATAR_URL"
-              title="BEHRANG AI Avatar"
-              allow="fullscreen; microphone; camera"
-              loading="lazy">
-            </iframe>
-            -->
-          </div>
-        </div>
-
+        <div class="avatar-visual"><div class="avatar-frame"><div class="avatar-placeholder"><div class="avatar-orb"></div><span class="avatar-status"><span class="status-dot"></span><span>AI Avatar — Coming Soon</span></span></div></div></div>
         <div class="avatar-chat">
-          <p class="avatar-desc" data-en="Ask me anything about my work, services, or how we can collaborate." data-fa="درباره کارم، خدماتم یا نحوه همکاری هر سوالی داری بپرس." data-tr="Çalışmalarım, hizmetlerim veya nasıl işbirliği yapabileceğimiz hakkında her şeyi sorabilirsiniz." data-de="Fragen Sie mich alles über meine Arbeit, Dienstleistungen oder wie wir zusammenarbeiten können.">Ask me anything about my work, services, or how we can collaborate.</p>
-
-          <div class="quick-prompts">
-            <button class="prompt-btn" data-en="What services do you offer?" data-fa="چه خدماتی ارائه می‌دهید؟" data-tr="Hangi hizmetleri sunuyorsunuz?" data-de="Welche Leistungen bieten Sie an?">What services do you offer?</button>
-            <button class="prompt-btn" data-en="Show me your Unreal projects" data-fa="پروژه‌های Unreal را نشان بده" data-tr="Unreal projelerinizi gösterin" data-de="Zeigen Sie mir Ihre Unreal-Projekte">Show me your Unreal projects</button>
-            <button class="prompt-btn" data-en="How can we work together?" data-fa="چطور می‌توانیم همکاری کنیم؟" data-tr="Nasıl birlikte çalışabiliriz?" data-de="Wie können wir zusammenarbeiten?">How can we work together?</button>
-            <button class="prompt-btn" data-en="What is 3D Gaussian Splatting?" data-fa="3DGS چیست؟" data-tr="3D Gaussian Splatting nedir?" data-de="Was ist 3D Gaussian Splatting?">What is 3D Gaussian Splatting?</button>
-          </div>
-
-          <div class="chat-input-wrap">
-            <input type="text" class="chat-input" id="chatInput" placeholder="Ask a question..." />
-            <button class="chat-send" id="chatSend">→</button>
-          </div>
+          <p class="avatar-desc">Ask me anything about my work or services.</p>
+          <div class="chat-input-wrap"><input type="text" class="chat-input" id="chatInput" placeholder="Ask a question..." /><button class="chat-send" id="chatSend">→</button></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
   <section class="cta-section section-pad" id="contact">
     <div class="container">
       <div class="cta-box reveal">
         <div class="cta-label">LET'S WORK TOGETHER</div>
-        <h2 class="cta-title" data-en="CREATE WORLDS BEYOND REALITY" data-fa="خلق دنیاهایی فراتر از واقعیت" data-tr="GERÇEĞİN ÖTESİNDE DÜNYALAR YARAT" data-de="WELTEN JENSEITS DER REALITÄT ERSCHAFFEN">CREATE WORLDS<br>BEYOND REALITY</h2>
-        <p class="cta-sub" data-en="Available for Virtual Production, AI Content, AR/VR and Motion Design projects." data-fa="برای پروژه‌های تولید مجازی، محتوای هوش مصنوعی، AR/VR و موشن دیزاین در دسترس هستم." data-tr="Sanal Prodüksiyon, AI İçerik, AR/VR ve Motion Tasarım projeleri için müsaitim." data-de="Verfügbar für Virtual Production, AI Content, AR/VR und Motion Design Projekte.">Available for Virtual Production, AI Content, AR/VR and Motion Design projects.</p>
-        <a href="mailto:hello@behrang.xyz" class="cta-btn">
-          <span data-en="GET IN TOUCH" data-fa="تماس بگیرید" data-tr="İLETİŞİME GEÇİN" data-de="KONTAKT AUFNEHMEN">GET IN TOUCH</span>
-        </a>
+        <h2 class="cta-title">CREATE WORLDS<br>BEYOND REALITY</h2>
+        <a href="mailto:hello@behrang.xyz" class="cta-btn">GET IN TOUCH</a>
         <div class="cta-email">HELLO@BEHRANG.XYZ</div>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer class="footer">
     <div class="container footer-inner">
       <div class="footer-logo">BEHRANG<sup>®</sup></div>
-      <div class="footer-links">
-        <a href="#about">About</a>
-        <a href="#works">Works</a>
-        <a href="#expertise">Expertise</a>
-        <a href="mailto:hello@behrang.xyz">Contact</a>
-      </div>
-      <div class="footer-copy">© 2025 BEHRANG.XYZ</div>
+      <div class="footer-copy">© 2026 BEHRANG.XYZ</div>
     </div>
   </footer>
 
   <script src="script.js"></script>
+
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+  </script>
 </body>
 </html>
