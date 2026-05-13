@@ -149,19 +149,25 @@
       <div class="footer-copy">© 2026 BEHRANG.XYZ</div>
     </div>
   </footer>
+<script>
+  if (window.netlifyIdentity) {
+    // اجبار مرورگر به پیدا کردن تنظیمات در آدرس نتلیفای شما
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+  }
 
-  <script src="script.js"></script>
-
-  <script>
+  // این بخش برای پروژه‌های خارج از نتلیفای حیاتی است
+  document.addEventListener('DOMContentLoaded', () => {
+    const loginButton = document.querySelector('.login-btn'); // یا هر دکمه ورودی که دارید
     if (window.netlifyIdentity) {
-      window.netlifyIdentity.on("init", user => {
-        if (!user) {
-          window.netlifyIdentity.on("login", () => {
-            document.location.href = "/admin/";
-          });
-        }
-      });
+      window.netlifyIdentity.setLocale('en');
     }
-  </script>
+  });
+</script>
 </body>
 </html>
